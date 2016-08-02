@@ -8,8 +8,30 @@
 
 import UIKit
 
-class GithubRepository {
+class GithubRepository
+{
+    var fullName = NSString()
+    var htmlURL = NSURL()
+    var repositoryID = NSString()
     
-    
-    
+    init(dictionary: NSDictionary)
+    {
+        if let name = dictionary["full_name"]
+        {
+            fullName = name as! NSString
+        }
+        if let dictionaryURL = dictionary["html_url"]
+        {
+            if let url = NSURL(string: dictionaryURL as! String)
+            {
+                htmlURL = url
+            }
+        		
+            if let repoID = dictionary["id"]
+            {
+                repositoryID = String(repoID)
+            }
+            
+        }
+    }
 }
